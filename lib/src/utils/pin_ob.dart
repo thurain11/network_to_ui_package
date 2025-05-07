@@ -23,8 +23,8 @@ class PnObClass<T extends Object?> {
         data!.add(ObjectFactory.create<T>(v));
       });
     }
-    links = json['links'] != null ? new Links.fromJson(json['links']) : null;
-    meta = json['meta'] != null ? new Meta.fromJson(json['meta']) : null;
+    links = json['links'] != null ? Links.fromJson(json['links']) : null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     result = json['result'];
     message = json['message'];
     pageImage = json['page_image'].toString();

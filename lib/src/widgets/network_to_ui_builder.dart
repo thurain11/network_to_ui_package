@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../network_to_ui.dart';
-import '../bloc/single_ui_bloc.dart';
-import '../utils/response_ob.dart';
+import '../bloc/network_to_ui_bloc.dart';
 import '../utils/type_def.dart';
 
-/// A widget that builds UI based on network data from [SingleUiBloc].
+/// A widget that builds UI based on network data from [NetworkToUiBloc].
 /// Supports loading, data, error, and more states with customizable widgets and callbacks.
-class SingleUiBuilder<T extends Object> extends StatefulWidget {
+class NetWorkToUiBuilder<T extends Object> extends StatefulWidget {
   /// The API endpoint URL.
   final String url;
 
@@ -47,7 +46,7 @@ class SingleUiBuilder<T extends Object> extends StatefulWidget {
   /// Whether to cache the network request.
   final bool isCached;
 
-  const SingleUiBuilder({
+  const NetWorkToUiBuilder({
     Key? key,
     required this.url,
     required this.widget,
@@ -65,18 +64,18 @@ class SingleUiBuilder<T extends Object> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  SingleUiBuilderState createState() => SingleUiBuilderState<T>();
+  NetWorkToUiBuilderState createState() => NetWorkToUiBuilderState<T>();
 }
 
-/// State class for [SingleUiBuilder], managing the [SingleUiBloc] lifecycle and UI rendering.
-class SingleUiBuilderState<T> extends State<SingleUiBuilder> {
-  late SingleUiBloc<T> bloc;
+/// State class for [NetWorkToUiBuilder], managing the [NetworkToUiBloc] lifecycle and UI rendering.
+class NetWorkToUiBuilderState<T> extends State<NetWorkToUiBuilder> {
+  late NetworkToUiBloc<T> bloc;
 
   @override
   void initState() {
     super.initState();
 
-    bloc = SingleUiBloc<T>(widget.url + widget.urlId);
+    bloc = NetworkToUiBloc<T>(widget.url + widget.urlId);
 
     bloc.getData(
       map: widget.map,

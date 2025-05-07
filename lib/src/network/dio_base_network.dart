@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import '../../network_to_ui.dart';
-import '../utils/response_ob.dart';
 
 enum ReqType { get, post, delete, put }
 
@@ -30,8 +29,11 @@ class DioBaseNetwork {
       language = 'mm_uni';
     }
 
+    final storage = getIt<StorageInterface>();
+    final token = await storage.getString("token");
+
     final Map<String, String?> defaultHeaders = {
-      "Authorization": config.authorizationToken,
+      "Authorization": token != null ? "Bearer $token" : null,
       "Accept": "application/json",
       "version-ios": config.nowVersionIos,
       "version-android": config.nowVersionAndroid,
@@ -153,7 +155,7 @@ class DioBaseNetwork {
       respOb.message = MsgState.error;
       if (e.response != null) {
         if (e.response!.statusCode == 422) {
-          respOb.errState = ErrState.invalid_response;
+          respOb.errState = ErrState.validate_err;
           respOb.data = e.response!.data;
         } else if (e.response!.statusCode == 500) {
           respOb.errState = ErrState.server_error;
@@ -235,7 +237,7 @@ class DioBaseNetwork {
       respOb.message = MsgState.error;
       if (e.response != null) {
         if (e.response!.statusCode == 422) {
-          respOb.errState = ErrState.invalid_response;
+          respOb.errState = ErrState.validate_err;
           respOb.data = e.response!.data;
         } else if (e.response!.statusCode == 500) {
           respOb.errState = ErrState.server_error;
