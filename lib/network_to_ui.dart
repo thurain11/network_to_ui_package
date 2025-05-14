@@ -1,5 +1,3 @@
-library network_to_ui;
-
 import 'package:get_it/get_it.dart';
 import 'package:network_to_ui/network_to_ui.dart';
 

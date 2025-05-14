@@ -79,9 +79,88 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   singleKey.currentState!.blocFunc();
                 },
-                child: const Text('load'))
+                child: const Text('load')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const DataRequestScreen();
+                  }));
+                },
+                child: const Text('Data Request Screen')),
           ],
         ),
+      ),
+    );
+  }
+}
+
+// Data Request Widget
+class DataRequestScreen extends StatelessWidget {
+  const DataRequestScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        title: const Text('Login'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 200,
+                child: DataRequestWidget(
+                  url: 'https://api.example.com/login',
+                  text: 'Login',
+                  isShowDialog: true,
+                  //RequestType default is post
+                  // requestType: ReqType.get,
+                  loadingWidget: const CircularProgressIndicator(),
+                  // onPress: () {
+                  //   return {
+                  //     'email': 'user@example.com',
+                  //     'password': 'password123',
+                  //   };
+                  // },
+                  onAsyncPress: () async {
+                    return {
+                      'email': 'user@example.com',
+                      'password': 'password123',
+                    };
+                  },
+                  // Success Function
+                  successFunc: (ResponseOb resp) {
+                    Map<String, dynamic> dataMap = resp.data['data'];
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Login successful')),
+                    );
+                  },
+                  // Validation Function
+                  validFunc: (ResponseOb resp) {
+                    Map<String, dynamic> errors = resp.data['errors'];
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text(errors.toString())),
+                    );
+                  },
+                  //// Error Function
+                  errorFunc: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Login failed')),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

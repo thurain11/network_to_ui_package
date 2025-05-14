@@ -36,10 +36,7 @@ dependencies:
   hive_flutter:
   network_to_ui:
     path: ../
-  dio:
-  get_it:
-  shared_preferences:
-  fluttertoast:
+
 
 dev_dependencies:
   flutter_test:

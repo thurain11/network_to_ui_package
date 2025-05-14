@@ -172,7 +172,7 @@ class DioBaseNetwork {
         }
       } else {
         if (e.error is SocketException) {
-          respOb.errState = ErrState.no_internet;
+          respOb.errState = ErrState.unknown_err;
         } else {
           respOb.errState = ErrState.unknown_err;
         }

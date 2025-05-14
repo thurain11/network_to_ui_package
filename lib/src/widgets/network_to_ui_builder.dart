@@ -138,7 +138,7 @@ class NetWorkToUiBuilderState<T> extends State<NetWorkToUiBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
     return StreamBuilder<ResponseOb>(
       stream: bloc.dataStream(),
       initialData: ResponseOb(data: null, message: MsgState.loading),

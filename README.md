@@ -27,7 +27,7 @@ Run the following command to install the package:
 flutter pub get
 ```
 
-## Setup
+## Setup 🚀
 Before using the `network_to_ui` package, you need to initialize its core components in your app's `main.dart`. This ensures that dependency injection, storage, object parsing, and network configurations are properly set up.
 
 ### Why Setup is Required
@@ -35,7 +35,7 @@ Before using the `network_to_ui` package, you need to initialize its core compon
 - **Object Parsing**: Factories for parsing JSON responses into Dart objects must be registered to handle API responses correctly.
 - **Network Configuration**: Custom headers, app versions, and authentication tokens need to be configured for network requests to work as expected.
 
-### Setup Code
+### Setup Code 🚀
 Add the following code to your `main.dart`:
 
 ```dart
@@ -114,29 +114,38 @@ import 'package:flutter/material.dart';
 import 'package:network_to_ui/network_to_ui.dart';
 
 class CountryScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return NetWorkToUiBuilder<CountryListOb>(
-      url: 'https://api.example.com/countries',
-      widget: (data, reload) {
-        if (data == null) return const Text('No data');
-        return Column(
-          children: [
-            Text('Country: ${data.name}'),
-            ElevatedButton(
-              onPressed: () => reload(),
-              child: const Text('Reload'),
+    const CountryScreen({super.key});
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(
+                title: const Text('Countries'),
             ),
-          ],
+            body: Center(
+                child: NetWorkToUiBuilder<CountryListOb>(
+                    url: 'https://api.example.com/countries',
+                    widget: (data, reload) {
+                        if (data == null) return const Text('No data');
+                        return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                                Text('Country: ${data.name}'),
+                                ElevatedButton(
+                                    onPressed: () => reload(),
+                                    child: const Text('Reload'),
+                                ),
+                            ],
+                        );
+                    },
+                    errorWidget: const Text('Failed to load data'),
+                    customLoadingWidget: const CircularProgressIndicator(),
+                ),
+            ),
         );
-      },
-      errorWidget: const Text('Failed to load data'),
-      customLoadingWidget: const CircularProgressIndicator(),
-    );
-  }
+    }
 }
 ```
-
 ### 2. Using `DataRequestWidget`
 Perform a POST request (e.g., login) and handle responses:
 
@@ -145,36 +154,45 @@ import 'package:flutter/material.dart';
 import 'package:network_to_ui/network_to_ui.dart';
 
 class LoginScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return DataRequestWidget(
-      url: 'https://api.example.com/login',
-      text: 'Login',
-      isShowDialog: true,
-      onAsyncPress: () async {
-        return {
-          'email': 'user@example.com',
-          'password': 'password123',
-        };
-      },
-      successFunc: (ResponseOb resp) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login successful')),
+    const LoginScreen({super.key});
+
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(
+                title: const Text('Login'),
+            ),
+            body: Center(
+                child: DataRequestWidget(
+                    url: 'https://api.example.com/login',
+                    text: 'Login',
+                    isShowDialog: true,
+                    onAsyncPress: () async {
+                        return {
+                            'email': 'user@example.com',
+                            'password': 'password123',
+                        };
+                    },
+                    successFunc: (ResponseOb resp) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Login successful')),
+                        );
+                    },
+                    validFunc: (ResponseOb resp) {
+                        Map<String, dynamic> errors = resp.data['errors'];
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(errors.toString())),
+                        );
+                    },
+                    errorFunc: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Login failed')),
+                        );
+                    },
+                ),
+            ),
         );
-      },
-      validFunc: (ResponseOb resp) {
-        Map<String, dynamic> errors = resp.data['errors'];
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(errors.toString())),
-        );
-      },
-      errorFunc: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login failed')),
-        );
-      },
-    );
-  }
+    }
 }
 ```
 
@@ -185,7 +203,7 @@ Manage user tokens using `AuthService`:
 final authService = getIt<AuthService>();
 
 // Save token
-await authService.saveUserToken('your-jwt-token');
+await authService.saveUserToken('your-token');
 
 // Retrieve token
 String? token = await authService.getUserToken();
@@ -194,7 +212,7 @@ String? token = await authService.getUserToken();
 await authService.logout();
 ```
 
-## Configuration
+## Configuration 
 - **Storage**: Uses `SharedPreferences` by default. You can extend `StorageInterface` for other storage solutions (e.g., Hive).
 - **Object Parsing**: Register factories for your models using `ObjectFactory` to parse JSON responses into Dart objects.
 - **Error Handling**: Customize error messages and UI using `errorWidget`, `customErrorCallback`, or `AppUtils`.
@@ -209,11 +227,11 @@ Contributions are welcome! To contribute:
 
 Please ensure your code follows the Flutter style guide and includes tests.
 
-## Author
+## Author ✍️
 Created by [Thurain Hein](https://github.com/thurain11/).
 
 ## License
 This package is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Support
+## Support 🎗️
 For issues or questions, please open an issue on the [GitHub repository](https://github.com/thurain11/network_to_ui_package/tree/master) or contact the maintainer at [thurainhein097@gmail.com].

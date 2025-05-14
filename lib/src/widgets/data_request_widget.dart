@@ -187,7 +187,7 @@ class _DataRequestWidgetState extends State<DataRequestWidget> {
       initialData: ResponseOb(),
       stream: _bloc.getRequestStream(),
       builder: (context, snapshot) {
-        ResponseOb? resp = snapshot.data;
+        // ResponseOb? resp = snapshot.data;
         return mainWidget();
       },
     );
