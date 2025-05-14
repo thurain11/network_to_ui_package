@@ -11,9 +11,7 @@ A Flutter package that simplifies network requests and UI integration using Dio 
 - **Customizable Headers**: Support for dynamic headers, including authentication tokens and platform-specific versioning.
 - **Object Parsing**: Parse JSON responses into Dart objects using `ObjectFactory`.
 
-## Author
 
-Created by [Thurain Hein](https://github.com/thurain11/).
 
 ## Installation
 Add `network_to_ui` to your `pubspec.yaml`:
@@ -211,8 +209,11 @@ Contributions are welcome! To contribute:
 
 Please ensure your code follows the Flutter style guide and includes tests.
 
+## Author
+Created by [Thurain Hein](https://github.com/thurain11/).
+
 ## License
 This package is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Support
-For issues or questions, please open an issue on the [GitHub repository](https://github.com/thurain11/) or contact the maintainer at [thurainhein097@gmail.com].
+For issues or questions, please open an issue on the [GitHub repository](https://github.com/thurain11/network_to_ui_package/tree/master) or contact the maintainer at [thurainhein097@gmail.com].

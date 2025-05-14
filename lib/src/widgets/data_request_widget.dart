@@ -114,11 +114,8 @@ class _DataRequestWidgetState extends State<DataRequestWidget> {
             AppUtils.moreResponse(resp, context);
           }
           if (widget.moreFunc != null) {
-            Map<String, dynamic> moreMap = resp.data;
             widget.moreFunc!(resp);
-          } else if (widget.moreFunc == null) {
-            Map<String, dynamic> moreMap = resp.data;
-          }
+          } else if (widget.moreFunc == null) {}
         } else {
           widget.errorFunc!();
         }

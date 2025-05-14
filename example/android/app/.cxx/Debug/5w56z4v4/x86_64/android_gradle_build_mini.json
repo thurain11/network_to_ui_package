@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/thurainhein/fvm/versions/3.29.3/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/thurainhein/Android/Sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/thurainhein/Documents/my_apps/network_to_ui/example/android/app/.cxx/Debug/5w56z4v4/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/thurainhein/Android/Sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/thurainhein/Documents/my_apps/network_to_ui/example/android/app/.cxx/Debug/5w56z4v4/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
