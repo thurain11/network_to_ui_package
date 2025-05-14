@@ -11,7 +11,6 @@ export 'src/storage/hive_storage.dart';
 export 'src/storage/shared_prefs_storage.dart';
 export 'src/storage/storage_interface.dart';
 export 'src/utils/dio_base_network_config.dart'; // DioBaseNetworkConfig export
-export 'src/utils/factory_builder.dart';
 export 'src/utils/object_factory.dart';
 export 'src/utils/response_ob.dart';
 export 'src/widgets/data_request_widget.dart';

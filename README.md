@@ -18,7 +18,7 @@ Add `network_to_ui` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  network_to_ui: ^0.1.0
+  network_to_ui: ^0.1.4
 ```
 
 Run the following command to install the package:
