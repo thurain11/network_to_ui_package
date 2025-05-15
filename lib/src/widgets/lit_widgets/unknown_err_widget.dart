@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class UnknownErrWidget extends StatelessWidget {
-  Function? fun;
-  String? message;
-  double? widgetSize;
+  final Function? fun;
+  final String? message;
+  final double? widgetSize;
 
-  UnknownErrWidget({this.fun, this.message, this.widgetSize = 300});
+  const UnknownErrWidget(
+      {super.key, this.fun, this.message, this.widgetSize = 300});
 
   @override
   Widget build(BuildContext context) {
