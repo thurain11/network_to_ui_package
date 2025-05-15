@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_to_ui/network_to_ui.dart';
+import 'package:network_to_ui_example/load_more_ui_page.dart';
 
 import 'factory_manager/factory_manager.dart';
 import 'models/user_ob.dart';
@@ -90,6 +91,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   }));
                 },
                 child: const Text('Data Request Screen')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const LoadMoreUiPage();
+                  }));
+                },
+                child: const Text('Load More Page')),
           ],
         ),
       ),

@@ -1,6 +1,9 @@
 # Changelog
 
-## [0.1.4] - 2025-05-14
+## [0.1.5] - 2025-05-15
+- Updated `README.md` with `LoadMoreUiBuilder` documentation, including expected JSON format for pagination.
+
+## [0.1.4] 
 - Removed unnecessary packages and variables.
 - Fixed minor bugs.
 

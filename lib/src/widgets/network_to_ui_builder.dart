@@ -47,7 +47,7 @@ class NetWorkToUiBuilder<T extends Object> extends StatefulWidget {
   final bool isCached;
 
   const NetWorkToUiBuilder({
-    Key? key,
+    super.key,
     required this.url,
     required this.widget,
     this.urlId = "",
@@ -61,7 +61,7 @@ class NetWorkToUiBuilder<T extends Object> extends StatefulWidget {
     this.customErrorCallback,
     this.errorWidget,
     this.isCached = false,
-  }) : super(key: key);
+  });
 
   @override
   NetWorkToUiBuilderState createState() => NetWorkToUiBuilderState<T>();

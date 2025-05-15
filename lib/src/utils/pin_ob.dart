@@ -29,22 +29,6 @@ class PnObClass<T extends Object?> {
     message = json['message'];
     pageImage = json['page_image'].toString();
   }
-
-//  Map<String, dynamic> toJson() {
-//    final Map<String, dynamic> data = new Map<String, dynamic>();
-//    if (this.data != null) {
-//      data['data'] = this.data.map((v) => v.toJson()).toList();
-//    }
-//    if (this.links != null) {
-//      data['links'] = this.links.toJson();
-//    }
-//    if (this.meta != null) {
-//      data['meta'] = this.meta.toJson();
-//    }
-//    data['result'] = this.result;
-//    data['message'] = this.message;
-//    return data;
-//  }
 }
 
 class Links {
@@ -63,11 +47,11 @@ class Links {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['first'] = this.first;
-    data['last'] = this.last;
-    data['prev'] = this.prev;
-    data['next'] = this.next;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['first'] = first;
+    data['last'] = last;
+    data['prev'] = prev;
+    data['next'] = next;
     return data;
   }
 }

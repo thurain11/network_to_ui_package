@@ -8,7 +8,7 @@ import '../utils/app_utils.dart';
 import '../utils/response_ob.dart';
 
 typedef OnPressed = dynamic Function();
-typedef onAsyncPressed = Future<Map<String, dynamic>?>? Function();
+typedef OnAsyncPressed = Future<Map<String, dynamic>?>? Function();
 typedef SuccessFuncMethod = void Function(ResponseOb ob);
 typedef ValidFuncMethod = void Function(ResponseOb ob);
 typedef MoreFuncMethod = void Function(ResponseOb ob);
@@ -28,7 +28,7 @@ class DataRequestWidget extends StatefulWidget {
   final StateFuncMethod? stateFunc;
   final MoreFuncMethod? moreFunc;
   final OnPressed? onPress;
-  final onAsyncPressed? onAsyncPress;
+  final OnAsyncPressed? onAsyncPress;
   final Function? errorFunc;
   final ValidFuncMethod? validFunc;
   final ReqType requestType;

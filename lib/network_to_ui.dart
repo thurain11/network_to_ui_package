@@ -12,6 +12,7 @@ export 'src/utils/dio_base_network_config.dart'; // DioBaseNetworkConfig export
 export 'src/utils/object_factory.dart';
 export 'src/utils/response_ob.dart';
 export 'src/widgets/data_request_widget.dart';
+export 'src/widgets/load_more_ui_builder.dart';
 export 'src/widgets/network_to_ui_builder.dart';
 
 final getIt = GetIt.instance;

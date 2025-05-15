@@ -1,0 +1,2 @@
+/Users/thurainhein/Documents/my_apps/network_to_ui/example/android/app/.cxx/Debug/5d1b4r6a/x86/CMakeFiles/edit_cache.dir
+/Users/thurainhein/Documents/my_apps/network_to_ui/example/android/app/.cxx/Debug/5d1b4r6a/x86/CMakeFiles/rebuild_cache.dir
