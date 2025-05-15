@@ -8,7 +8,6 @@ import '../network/dio_base_network.dart';
 import '../utils/response_ob.dart';
 import '../utils/type_def.dart';
 import 'lit_widgets/err_widget.dart';
-import 'lit_widgets/more_widget.dart';
 import 'lit_widgets/unknown_err_widget.dart';
 
 typedef ChildWidget<T extends Object> = Widget Function(
@@ -18,49 +17,49 @@ typedef CustomMoreWidget = Widget Function(Map<String, dynamic> data);
 
 class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
   /// request link ရေးရန်
-  String? url;
+  final String? url;
 
   /// request body ရေးရန်
   Map<String, dynamic>? map;
 
   /// listview  နဲ့ ဖော်ပြမယ်ဆိုရင် true, gridview နဲ့ ဖော်ပြမယ်ဆိုရင် false
-  bool? isList;
+  final bool? isList;
 
   /// Listview ကို Sliver အနေနဲ့ သုံးချင််ရင် true
-  bool isSliver;
+  final bool isSliver;
 
   /// RequestType က Get ဒါမှမဟုတ် Post
-  ReqType requestType;
+  final ReqType requestType;
 
   /// HeaderType က ယခု apex project အတွက် သီးသန့်ဖြစ်ပြီး customer, normal,agent ; default က normal
 
   /// ကိုယ်တိုင် loading widget ရေးချင်တဲ့အချိန်မှာ ထည့်ပေးရန် ; default က widget folder အောက်က LoadingWidget
-  Widget? loadingWidget;
+  final Widget? loadingWidget;
 
   /// girdView အသုံးပြုတဲ့အခါ ဖော်ပြမယ့် gridCount
-  int gridCount;
+  final int gridCount;
 
   /// gridChildRatio က gridview ရဲ့ child တွေ size သတ်မှတ်ဖို့ အသုံးပြုပါတယ်
-  double gridChildRatio;
+  final double gridChildRatio;
 
   /// successResponse ကို စစ်ရန်
-  SuccessCallback? successCallback;
+  final SuccessCallback? successCallback;
 
   /// customMoreResponse
-  CustomMoreCallback? customMoreCallback;
+  final CustomMoreCallback? customMoreCallback;
 
   /// errorMoreResponse
-  CustomErrorCallback? customErrorCallback;
+  final CustomErrorCallback? customErrorCallback;
 
   /// listview or gridview အတွက် children widget ရေးရန်
 
-  ChildWidget<T>? childWidget;
+  final ChildWidget<T>? childWidget;
 
-  Widget? scrollHeaderWidget;
+  final Widget? scrollHeaderWidget;
 
-  CustomMoreWidget? customMoreWidget;
+  final CustomMoreWidget? customMoreWidget;
 
-  Axis scrollDirection = Axis.vertical;
+  Axis scrollDirection;
 
   /// စာမျက်အစမှာ data ရယူချင်ရင် true, မယူချင်ရင် false,  default က true
   bool isFirstLoad;
@@ -70,20 +69,20 @@ class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
 
   bool enablePullUp = false;
 
-  ScrollController? scrollController;
+  final ScrollController? scrollController;
 
   // Is Cached or not
-  bool? isCached;
+  final bool? isCached;
 
   //No Data Custom Widget
-  Widget? noDataWidget;
+  final Widget? noDataWidget;
 
-  double? mainAxisExt;
+  final double? mainAxisExt;
 
-  bool isNotShowSnack = false;
+  bool isNotShowSnack;
 
-  double crossAxisSpacing;
-  double mainAxisSpacing;
+  final double crossAxisSpacing;
+  final double mainAxisSpacing;
 
   LoadMoreUiBuilder.init(
       {required this.url,
@@ -91,7 +90,7 @@ class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
       this.scrollController,
       this.childWidget,
       this.isFirstLoad = true,
-      this.map,
+      this.map = const {},
       this.scrollHeaderWidget,
       this.isList = true,
       this.requestType = ReqType.get,
@@ -138,7 +137,8 @@ class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
       this.isCached = false,
       this.noDataWidget,
       this.isNotShowSnack = false,
-      this.isSliver = false});
+      this.isSliver = false,
+      this.mainAxisExt});
 
   @override
   LoadMoreUiBuilderState<T> createState() {
@@ -363,8 +363,9 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                         );
                       } else if (rv.message == MsgState.more) {
                         return widget.customMoreWidget == null
-                            ? MoreWidget(
-                                data: rv.data,
+                            ? SizedBox(
+                                height: 40,
+                                child: Text("No more data found"),
                               )
                             : widget.customMoreWidget!(rv.data);
                       } else {

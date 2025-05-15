@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MoreWidget extends StatelessWidget {
-  dynamic data; // Non-final field causing must_be_immutable warning
-
-  MoreWidget({Key? key, this.data}) : super(key: key);
+  // Non-final field causing must_be_immutable warning
 
   @override
   Widget build(BuildContext context) {
