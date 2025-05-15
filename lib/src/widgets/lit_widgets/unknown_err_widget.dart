@@ -5,7 +5,7 @@ class UnknownErrWidget extends StatelessWidget {
   String? message;
   double? widgetSize;
 
-  UnknownErrWidget({super.key, this.fun, this.message, this.widgetSize = 300});
+  UnknownErrWidget({this.fun, this.message, this.widgetSize = 300});
 
   @override
   Widget build(BuildContext context) {

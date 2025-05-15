@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MoreWidget extends StatelessWidget {
   Map<String, dynamic>? data;
-  MoreWidget(this.data, {Key? key}) : super(key: key);
+  MoreWidget(this.data);
 
   @override
   Widget build(BuildContext context) {

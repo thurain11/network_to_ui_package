@@ -5,9 +5,9 @@ import 'unknown_err_widget.dart';
 
 class ErrWidget extends StatelessWidget {
   ErrState? errState;
-  Function func;
+  Function? func;
 
-  ErrWidget(this.errState, this.func, {super.key});
+  ErrWidget({this.errState, this.func});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class ErrWidget extends StatelessWidget {
                   height: 25,
                   child: ElevatedButton(
                     onPressed: () {
-                      func();
+                      func!();
                     },
                     child: Text(
                       "Try Again",
@@ -107,7 +107,7 @@ class ErrWidget extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                func();
+                func!();
               },
               child: const Text(
                 "Try Again",
@@ -166,13 +166,13 @@ class ErrWidget extends StatelessWidget {
     } else if (errState == ErrState.unknown_err) {
       return UnknownErrWidget(
         fun: () {
-          func();
+          func!();
         },
       );
     } else {
       return UnknownErrWidget(
         fun: () {
-          func();
+          func!();
         },
       );
     }

@@ -87,7 +87,7 @@ class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
 
   LoadMoreUiBuilder.init(
       {required this.url,
-      Key? key,
+      super.key,
       this.scrollController,
       this.childWidget,
       this.isFirstLoad = true,
@@ -111,12 +111,11 @@ class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
       this.scrollDirection = Axis.vertical,
       this.crossAxisSpacing = 0,
       this.mainAxisSpacing = 0,
-      this.isSliver = false})
-      : super(key: key);
+      this.isSliver = false});
 
   LoadMoreUiBuilder(
       {required this.url,
-      Key? key,
+      super.key,
       this.scrollController,
       this.scrollDirection = Axis.vertical,
       this.childWidget,
@@ -139,8 +138,7 @@ class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
       this.isCached = false,
       this.noDataWidget,
       this.isNotShowSnack = false,
-      this.isSliver = false})
-      : super(key: key);
+      this.isSliver = false});
 
   @override
   LoadMoreUiBuilderState<T> createState() {
@@ -353,8 +351,8 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                       } else if (rv.message == MsgState.error) {
                         return SingleChildScrollView(
                           child: ErrWidget(
-                            rv.errState,
-                            () {
+                            errState: rv.errState,
+                            func: () {
                               bloc.getData(
                                 widget.url!,
                                 map: widget.map,
