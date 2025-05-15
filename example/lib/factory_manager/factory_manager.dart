@@ -6,7 +6,7 @@ import '../models/yangon_townships_ob.dart';
 class FactoryManager {
   static void setupFactories() {
     ObjectFactory.registerFactory<UserOb>((json) => UserOb.fromJson(json));
-    //TownshipsData
+    //TownshipsData for LoadMore Ui Page
     ObjectFactory.registerFactory<TownshipsData>(
         (json) => TownshipsData.fromJson(json));
   }
