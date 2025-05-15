@@ -41,7 +41,7 @@ class TownshipsData {
 class Links {
   String? first;
   String? last;
-  Null? prev;
+  String? prev;
   String? next;
 
   Links({this.first, this.last, this.prev, this.next});
@@ -54,11 +54,11 @@ class Links {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['first'] = this.first;
-    data['last'] = this.last;
-    data['prev'] = this.prev;
-    data['next'] = this.next;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['first'] = first;
+    data['last'] = last;
+    data['prev'] = prev;
+    data['next'] = next;
     return data;
   }
 }

@@ -148,7 +148,7 @@ class DataRequestScreen extends StatelessWidget {
                   },
                   // Success Function
                   successFunc: (ResponseOb resp) {
-                    Map<String, dynamic> dataMap = resp.data['data'];
+                    // Map<String, dynamic> dataMap = resp.data['data'];
 
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Login successful')),
