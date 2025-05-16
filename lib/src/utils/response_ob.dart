@@ -43,7 +43,7 @@ enum ErrState {
   rateLimit
 }
 
-enum PageState { first, other, no_more }
+enum PageState { first, other, noMore }
 
 enum RefreshUIMode {
   replace,

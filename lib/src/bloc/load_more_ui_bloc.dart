@@ -220,7 +220,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
       List<T> l = [];
       resp.message = MsgState.data;
       resp.data = l;
-      resp.pgState = PageState.no_more;
+      resp.pgState = PageState.noMore;
       publishSubject.sink.add(resp);
     }
   }
