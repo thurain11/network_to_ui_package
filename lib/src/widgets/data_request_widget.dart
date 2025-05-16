@@ -122,7 +122,7 @@ class _DataRequestWidgetState extends State<DataRequestWidget> {
       }
 
       if (resp.message == MsgState.error) {
-        if (resp.errState == ErrState.no_login) {
+        if (resp.errState == ErrState.noLogin) {
           // Handle no_login case if needed
         }
 
@@ -139,25 +139,25 @@ class _DataRequestWidgetState extends State<DataRequestWidget> {
             if (widget.showErrSnack && mounted) {
               AppUtils.checkError(context: context, responseOb: resp);
             } else {
-              if (resp.errState == ErrState.server_error) {
+              if (resp.errState == ErrState.serverError) {
                 AppUtils.showToast(
                   message: "Internal Server Error",
                   isError: true,
                 );
               }
-              if (resp.errState == ErrState.no_internet) {
+              if (resp.errState == ErrState.noInternet) {
                 AppUtils.showToast(
                   message: "No Internet connection!",
                   isError: true,
                 );
               }
-              if (resp.errState == ErrState.not_found) {
+              if (resp.errState == ErrState.notFound) {
                 AppUtils.showToast(
                   message: "Your requested data not found!",
                   isError: true,
                 );
               }
-              if (resp.errState == ErrState.connection_timeout) {
+              if (resp.errState == ErrState.connectionTimeout) {
                 AppUtils.showToast(
                   message: "Connection Timeout! Try Again",
                   isError: true,
@@ -172,7 +172,7 @@ class _DataRequestWidgetState extends State<DataRequestWidget> {
           }
         }
 
-        if (resp.errState == ErrState.validate_err) {
+        if (resp.errState == ErrState.validateError) {
           if (widget.validFunc != null) {
             widget.validFunc!(resp);
           }

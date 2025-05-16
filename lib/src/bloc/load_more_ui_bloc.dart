@@ -46,7 +46,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
                 } catch (e) {
                   resp.message = MsgState.error;
                   resp.data = "Failed to parse data: $e";
-                  resp.errState = ErrState.parse_error;
+                  resp.errState = ErrState.parseError;
                   publishSubject.sink.add(resp);
                 }
               } else if (rv.data["result"].toString() == "0") {
@@ -56,7 +56,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
               } else {
                 resp.message = MsgState.error;
                 resp.data = "Invalid result value";
-                resp.errState = ErrState.unknown_err;
+                resp.errState = ErrState.unknownError;
                 publishSubject.sink.add(resp);
               }
             }
@@ -74,7 +74,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
               } catch (e) {
                 resp.message = MsgState.error;
                 resp.data = "Failed to parse data: $e";
-                resp.errState = ErrState.parse_error;
+                resp.errState = ErrState.parseError;
                 publishSubject.sink.add(resp);
               }
             }
@@ -85,7 +85,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
                 if (flv.data == null && flv.links == null && flv.meta == null) {
                   resp.message = MsgState.error;
                   resp.data = "Invalid plain JSON: No usable data";
-                  resp.errState = ErrState.invalid_response;
+                  resp.errState = ErrState.invalidResponse;
                   publishSubject.sink.add(resp);
                 } else {
                   nextPageUrl = flv.links?.next?.toString() ?? "";
@@ -98,7 +98,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
               } catch (e) {
                 resp.message = MsgState.error;
                 resp.data = "Failed to parse plain JSON: $e";
-                resp.errState = ErrState.parse_error;
+                resp.errState = ErrState.parseError;
                 publishSubject.sink.add(resp);
               }
             }
@@ -106,7 +106,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
             resp.message = MsgState.error;
             resp.data =
                 "Invalid response format: Data is not a valid JSON object";
-            resp.errState = ErrState.invalid_response;
+            resp.errState = ErrState.invalidResponse;
             publishSubject.sink.add(resp);
           }
         } else {
@@ -146,7 +146,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
                   } catch (e) {
                     resp.message = MsgState.error;
                     resp.data = "Failed to parse data: $e";
-                    resp.errState = ErrState.parse_error;
+                    resp.errState = ErrState.parseError;
                     publishSubject.sink.add(resp);
                   }
                 } else if (rv.data["result"].toString() == "0") {
@@ -156,7 +156,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
                 } else {
                   resp.message = MsgState.error;
                   resp.data = "Invalid result value";
-                  resp.errState = ErrState.unknown_err;
+                  resp.errState = ErrState.unknownError;
                   publishSubject.sink.add(resp);
                 }
               }
@@ -174,7 +174,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
                 } catch (e) {
                   resp.message = MsgState.error;
                   resp.data = "Failed to parse data: $e";
-                  resp.errState = ErrState.parse_error;
+                  resp.errState = ErrState.parseError;
                   publishSubject.sink.add(resp);
                 }
               }
@@ -187,7 +187,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
                       flv.meta == null) {
                     resp.message = MsgState.error;
                     resp.data = "Invalid plain JSON: No usable data";
-                    resp.errState = ErrState.invalid_response;
+                    resp.errState = ErrState.invalidResponse;
                     publishSubject.sink.add(resp);
                   } else {
                     nextPageUrl = flv.links?.next?.toString() ?? "";
@@ -200,7 +200,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
                 } catch (e) {
                   resp.message = MsgState.error;
                   resp.data = "Failed to parse plain JSON: $e";
-                  resp.errState = ErrState.parse_error;
+                  resp.errState = ErrState.parseError;
                   publishSubject.sink.add(resp);
                 }
               }
@@ -208,7 +208,7 @@ class LoadMoreUiBloc<T extends Object?> extends DioBaseNetwork {
               resp.message = MsgState.error;
               resp.data =
                   "Invalid response format: Data is not a valid JSON object";
-              resp.errState = ErrState.invalid_response;
+              resp.errState = ErrState.invalidResponse;
               publishSubject.sink.add(resp);
             }
           } else {

@@ -24,34 +24,34 @@ class AppUtils {
   }) {
     String message;
     switch (responseOb.errState) {
-      case ErrState.invalid_response:
+      case ErrState.invalidResponse:
         message = 'Invalid response from server';
         break;
-      case ErrState.server_error:
+      case ErrState.serverError:
         message = 'Server error, please try again later';
         break;
-      case ErrState.maintainance:
+      case ErrState.serverMaintain:
         message = 'Server under maintenance';
         break;
-      case ErrState.not_found:
+      case ErrState.notFound:
         message = 'Resource not found';
         break;
-      case ErrState.unauth:
+      case ErrState.unAuth:
         message = 'Unauthorized access';
         break;
-      case ErrState.rate_limit:
+      case ErrState.rateLimit:
         message = 'Rate limit exceeded';
         break;
-      case ErrState.no_internet:
+      case ErrState.noInternet:
         message = 'No internet connection';
         break;
       case ErrState.cancelled:
         message = 'Request cancelled';
         break;
-      case ErrState.validate_err:
+      case ErrState.validateError:
         message = 'Validation error';
         break;
-      case ErrState.unknown_err:
+      case ErrState.unknownError:
       default:
         message = 'An unknown error occurred';
         break;

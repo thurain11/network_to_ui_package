@@ -41,14 +41,14 @@ class NetworkToUiBloc<T> extends DioBaseNetwork {
                     resp.message = MsgState.error;
                     resp.data =
                         "No factory registered for type ${T.toString()}";
-                    resp.errState = ErrState.parse_error;
+                    resp.errState = ErrState.parseError;
                     publishSubject.sink.add(resp);
                     return;
                   }
                 } catch (e) {
                   resp.message = MsgState.error;
                   resp.data = "Failed to parse data: $e";
-                  resp.errState = ErrState.parse_error;
+                  resp.errState = ErrState.parseError;
                   publishSubject.sink.add(resp);
                   return;
                 }
@@ -62,7 +62,7 @@ class NetworkToUiBloc<T> extends DioBaseNetwork {
               } else {
                 resp.message = MsgState.error;
                 resp.data = "Invalid result value";
-                resp.errState = ErrState.unknown_err;
+                resp.errState = ErrState.unknownError;
                 publishSubject.sink.add(resp);
               }
             }
@@ -77,14 +77,14 @@ class NetworkToUiBloc<T> extends DioBaseNetwork {
                 if (ob == null) {
                   resp.message = MsgState.error;
                   resp.data = "No factory registered for type ${T.toString()}";
-                  resp.errState = ErrState.parse_error;
+                  resp.errState = ErrState.parseError;
                   publishSubject.sink.add(resp);
                   return;
                 }
               } catch (e) {
                 resp.message = MsgState.error;
                 resp.data = "Failed to parse data: $e";
-                resp.errState = ErrState.parse_error;
+                resp.errState = ErrState.parseError;
                 publishSubject.sink.add(resp);
                 return;
               }
@@ -100,14 +100,14 @@ class NetworkToUiBloc<T> extends DioBaseNetwork {
                 if (ob == null) {
                   resp.message = MsgState.error;
                   resp.data = "No factory registered for type ${T.toString()}";
-                  resp.errState = ErrState.parse_error;
+                  resp.errState = ErrState.parseError;
                   publishSubject.sink.add(resp);
                   return;
                 }
               } catch (e) {
                 resp.message = MsgState.error;
                 resp.data = "Failed to parse data: $e";
-                resp.errState = ErrState.parse_error;
+                resp.errState = ErrState.parseError;
                 publishSubject.sink.add(resp);
                 return;
               }
@@ -119,7 +119,7 @@ class NetworkToUiBloc<T> extends DioBaseNetwork {
             resp.message = MsgState.error;
             resp.data =
                 "Invalid response format: Data is not a valid JSON object";
-            resp.errState = ErrState.invalid_response;
+            resp.errState = ErrState.invalidResponse;
             publishSubject.sink.add(resp);
           }
         } else {

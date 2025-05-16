@@ -309,7 +309,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                       } else if (rv.message == MsgState.error) {
                         return SingleChildScrollView(
                           child: ErrWidget(
-                            errState: rv.errState ?? ErrState.unknown_err,
+                            errState: rv.errState ?? ErrState.unknownError,
                             func: () {
                               bloc.getData(
                                 widget.url!,

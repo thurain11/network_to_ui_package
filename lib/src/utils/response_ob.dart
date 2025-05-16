@@ -26,22 +26,21 @@ class ResponseOb {
 enum MsgState { error, loading, data, more, server }
 
 enum ErrState {
-  no_internet,
-  connection_timeout,
-  not_found,
-  server_error,
-  too_many_request,
-  unknown_err,
-  validate_err,
-  not_supported,
-  no_login, //401
-  server_maintain,
-  parse_error,
-  invalid_response,
+  noInternet,
+  connectionTimeout,
+  notFound,
+  serverError,
+  tooManyRequest,
+  unknownError,
+  validateError,
+  notSupported,
+  noLogin, //401
+  serverMaintain,
+  parseError,
+  invalidResponse,
   cancelled,
-  maintainance,
-  unauth,
-  rate_limit
+  unAuth,
+  rateLimit
 }
 
 enum PageState { first, other, no_more }

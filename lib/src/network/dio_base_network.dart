@@ -141,10 +141,10 @@ class DioBaseNetwork {
         callBack(respOb);
       } else {
         respOb.message = MsgState.error;
-        respOb.errState = ErrState.unknown_err;
+        respOb.errState = ErrState.unknownError;
         callBack(respOb);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (CancelToken.isCancel(e)) {
         respOb.message = MsgState.error;
         respOb.data = "Request cancelled";
@@ -155,32 +155,32 @@ class DioBaseNetwork {
       respOb.message = MsgState.error;
       if (e.response != null) {
         if (e.response!.statusCode == 422) {
-          respOb.errState = ErrState.validate_err;
+          respOb.errState = ErrState.validateError;
           respOb.data = e.response!.data;
         } else if (e.response!.statusCode == 500) {
-          respOb.errState = ErrState.server_error;
+          respOb.errState = ErrState.serverError;
         } else if (e.response!.statusCode == 503) {
-          respOb.errState = ErrState.maintainance;
+          respOb.errState = ErrState.serverMaintain;
         } else if (e.response!.statusCode == 404) {
-          respOb.errState = ErrState.not_found;
+          respOb.errState = ErrState.notFound;
         } else if (e.response!.statusCode == 401) {
-          respOb.errState = ErrState.unauth;
+          respOb.errState = ErrState.unAuth;
         } else if (e.response!.statusCode == 429) {
-          respOb.errState = ErrState.rate_limit;
+          respOb.errState = ErrState.rateLimit;
         } else {
-          respOb.errState = ErrState.unknown_err;
+          respOb.errState = ErrState.unknownError;
         }
       } else {
         if (e.error is SocketException) {
-          respOb.errState = ErrState.unknown_err;
+          respOb.errState = ErrState.unknownError;
         } else {
-          respOb.errState = ErrState.unknown_err;
+          respOb.errState = ErrState.unknownError;
         }
       }
       callBack(respOb);
     } catch (e) {
       respOb.message = MsgState.error;
-      respOb.errState = ErrState.unknown_err;
+      respOb.errState = ErrState.unknownError;
       callBack(respOb);
     }
   }
@@ -223,10 +223,10 @@ class DioBaseNetwork {
         callBack(respOb);
       } else {
         respOb.message = MsgState.error;
-        respOb.errState = ErrState.unknown_err;
+        respOb.errState = ErrState.unknownError;
         callBack(respOb);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       if (CancelToken.isCancel(e)) {
         respOb.message = MsgState.error;
         respOb.data = "Request cancelled";
@@ -237,32 +237,32 @@ class DioBaseNetwork {
       respOb.message = MsgState.error;
       if (e.response != null) {
         if (e.response!.statusCode == 422) {
-          respOb.errState = ErrState.validate_err;
+          respOb.errState = ErrState.validateError;
           respOb.data = e.response!.data;
         } else if (e.response!.statusCode == 500) {
-          respOb.errState = ErrState.server_error;
+          respOb.errState = ErrState.serverError;
         } else if (e.response!.statusCode == 503) {
-          respOb.errState = ErrState.maintainance;
+          respOb.errState = ErrState.serverMaintain;
         } else if (e.response!.statusCode == 404) {
-          respOb.errState = ErrState.not_found;
+          respOb.errState = ErrState.notFound;
         } else if (e.response!.statusCode == 401) {
-          respOb.errState = ErrState.unauth;
+          respOb.errState = ErrState.unAuth;
         } else if (e.response!.statusCode == 429) {
-          respOb.errState = ErrState.rate_limit;
+          respOb.errState = ErrState.rateLimit;
         } else {
-          respOb.errState = ErrState.unknown_err;
+          respOb.errState = ErrState.unknownError;
         }
       } else {
         if (e.error is SocketException) {
-          respOb.errState = ErrState.no_internet;
+          respOb.errState = ErrState.noInternet;
         } else {
-          respOb.errState = ErrState.unknown_err;
+          respOb.errState = ErrState.unknownError;
         }
       }
       callBack(respOb);
     } catch (e) {
       respOb.message = MsgState.error;
-      respOb.errState = ErrState.unknown_err;
+      respOb.errState = ErrState.unknownError;
       callBack(respOb);
     }
   }
