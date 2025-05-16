@@ -17,7 +17,7 @@ typedef CustomMoreWidget = Widget Function(Map<String, dynamic> data);
 
 class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
   final String? url; // Made final
-  final Map<String, dynamic> map; // Made final
+  late final Map<String, dynamic> map; // Made final
   final bool? isList; // Made final
   final bool isSliver; // Made final
   final ReqType requestType; // Made final
@@ -31,7 +31,7 @@ class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
   final Widget? scrollHeaderWidget; // Made final
   final CustomMoreWidget? customMoreWidget; // Made final
   final Axis scrollDirection; // Made final
-  final bool isFirstLoad; // Made final
+  late final bool isFirstLoad; // Made final
   final bool enablePullUp; // Made final
   final ScrollController? scrollController; // Made final
   final bool? isCached; // Made final
@@ -180,12 +180,12 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
   }) {
     if (map != null) {
       setState(() {
-        // widget.map = map;
+        widget.map = map;
       });
     }
     if (widget.isFirstLoad == false) {
       setState(() {
-        // widget.isFirstLoad = true;
+        widget.isFirstLoad = true;
       });
     }
 
