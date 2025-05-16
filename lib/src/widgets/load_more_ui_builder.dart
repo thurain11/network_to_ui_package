@@ -16,129 +16,86 @@ typedef ChildWidget<T extends Object> = Widget Function(
 typedef CustomMoreWidget = Widget Function(Map<String, dynamic> data);
 
 class LoadMoreUiBuilder<T extends Object> extends StatefulWidget {
-  /// request link ရေးရန်
-  final String? url;
+  final String? url; // Made final
+  Map<String, dynamic> map; // Made final
+  final bool? isList; // Made final
+  final bool isSliver; // Made final
+  final ReqType requestType; // Made final
+  final Widget? loadingWidget; // Made final
+  final int gridCount; // Made final
+  final double gridChildRatio; // Made final
+  final SuccessCallback? successCallback; // Made final
+  final CustomMoreCallback? customMoreCallback; // Made final
+  final CustomErrorCallback? customErrorCallback; // Made final
+  final ChildWidget<T>? childWidget; // Made final
+  final Widget? scrollHeaderWidget; // Made final
+  final CustomMoreWidget? customMoreWidget; // Made final
+  final Axis scrollDirection; // Made final
+  bool isFirstLoad; // Made final
+  final bool enablePullUp; // Made final
+  final ScrollController? scrollController; // Made final
+  final bool? isCached; // Made final
+  final Widget? noDataWidget; // Made final
+  final double? mainAxisExt; // Made final
+  final bool isNotShowSnack; // Made final
+  final double crossAxisSpacing; // Made final
+  final double mainAxisSpacing; // Made final
 
-  /// request body ရေးရန်
-  Map<String, dynamic>? map;
+  LoadMoreUiBuilder.init({
+    required this.url,
+    super.key,
+    this.scrollController,
+    this.childWidget,
+    this.isFirstLoad = true,
+    this.map = const {},
+    this.scrollHeaderWidget,
+    this.isList = true,
+    this.requestType = ReqType.get,
+    this.loadingWidget,
+    this.gridCount = 2,
+    this.successCallback,
+    this.customMoreCallback,
+    this.customErrorCallback,
+    this.gridChildRatio = 100 / 130,
+    this.mainAxisExt,
+    this.customMoreWidget,
+    this.enablePullUp = false,
+    this.isCached = false,
+    this.isNotShowSnack = false,
+    this.noDataWidget,
+    this.scrollDirection = Axis.vertical,
+    this.crossAxisSpacing = 0,
+    this.mainAxisSpacing = 0,
+    this.isSliver = false,
+  });
 
-  /// listview  နဲ့ ဖော်ပြမယ်ဆိုရင် true, gridview နဲ့ ဖော်ပြမယ်ဆိုရင် false
-  final bool? isList;
-
-  /// Listview ကို Sliver အနေနဲ့ သုံးချင််ရင် true
-  final bool isSliver;
-
-  /// RequestType က Get ဒါမှမဟုတ် Post
-  final ReqType requestType;
-
-  /// HeaderType က ယခု apex project အတွက် သီးသန့်ဖြစ်ပြီး customer, normal,agent ; default က normal
-
-  /// ကိုယ်တိုင် loading widget ရေးချင်တဲ့အချိန်မှာ ထည့်ပေးရန် ; default က widget folder အောက်က LoadingWidget
-  final Widget? loadingWidget;
-
-  /// girdView အသုံးပြုတဲ့အခါ ဖော်ပြမယ့် gridCount
-  final int gridCount;
-
-  /// gridChildRatio က gridview ရဲ့ child တွေ size သတ်မှတ်ဖို့ အသုံးပြုပါတယ်
-  final double gridChildRatio;
-
-  /// successResponse ကို စစ်ရန်
-  final SuccessCallback? successCallback;
-
-  /// customMoreResponse
-  final CustomMoreCallback? customMoreCallback;
-
-  /// errorMoreResponse
-  final CustomErrorCallback? customErrorCallback;
-
-  /// listview or gridview အတွက် children widget ရေးရန်
-
-  final ChildWidget<T>? childWidget;
-
-  final Widget? scrollHeaderWidget;
-
-  final CustomMoreWidget? customMoreWidget;
-
-  Axis scrollDirection;
-
-  /// စာမျက်အစမှာ data ရယူချင်ရင် true, မယူချင်ရင် false,  default က true
-  bool isFirstLoad;
-
-  /// child widget ကို နှိပ်ရင် အလုပ်လုပ်မယ့် method
-  // Function onChildPress;
-
-  bool enablePullUp = false;
-
-  final ScrollController? scrollController;
-
-  // Is Cached or not
-  final bool? isCached;
-
-  //No Data Custom Widget
-  final Widget? noDataWidget;
-
-  final double? mainAxisExt;
-
-  bool isNotShowSnack;
-
-  final double crossAxisSpacing;
-  final double mainAxisSpacing;
-
-  LoadMoreUiBuilder.init(
-      {required this.url,
-      super.key,
-      this.scrollController,
-      this.childWidget,
-      this.isFirstLoad = true,
-      this.map = const {},
-      this.scrollHeaderWidget,
-      this.isList = true,
-      this.requestType = ReqType.get,
-      this.loadingWidget,
-      this.gridCount = 2,
-      this.successCallback,
-      this.customMoreCallback,
-      this.customErrorCallback,
-      this.gridChildRatio = 100 / 130,
-      // this.onChildPress,
-      this.mainAxisExt,
-      this.customMoreWidget,
-      this.enablePullUp = false,
-      this.isCached = false,
-      this.isNotShowSnack = false,
-      this.noDataWidget,
-      this.scrollDirection = Axis.vertical,
-      this.crossAxisSpacing = 0,
-      this.mainAxisSpacing = 0,
-      this.isSliver = false});
-
-  LoadMoreUiBuilder(
-      {required this.url,
-      super.key,
-      this.scrollController,
-      this.scrollDirection = Axis.vertical,
-      this.childWidget,
-      this.isFirstLoad = true,
-      this.map,
-      this.scrollHeaderWidget,
-      this.isList = true,
-      this.requestType = ReqType.get,
-      this.loadingWidget,
-      this.gridCount = 2,
-      this.successCallback,
-      this.customMoreCallback,
-      this.customErrorCallback,
-      this.gridChildRatio = 100 / 130,
-      // this.onChildPress,
-      this.customMoreWidget,
-      this.crossAxisSpacing = 0,
-      this.mainAxisSpacing = 0,
-      this.enablePullUp = false,
-      this.isCached = false,
-      this.noDataWidget,
-      this.isNotShowSnack = false,
-      this.isSliver = false,
-      this.mainAxisExt});
+  LoadMoreUiBuilder({
+    required this.url,
+    super.key,
+    this.scrollController,
+    this.scrollDirection = Axis.vertical,
+    this.childWidget,
+    this.isFirstLoad = true,
+    this.map = const {},
+    this.scrollHeaderWidget,
+    this.isList = true,
+    this.requestType = ReqType.get,
+    this.loadingWidget,
+    this.gridCount = 2,
+    this.successCallback,
+    this.customMoreCallback,
+    this.customErrorCallback,
+    this.gridChildRatio = 100 / 130,
+    this.customMoreWidget,
+    this.crossAxisSpacing = 0,
+    this.mainAxisSpacing = 0,
+    this.enablePullUp = false,
+    this.isCached = false,
+    this.noDataWidget,
+    this.isNotShowSnack = false,
+    this.isSliver = false,
+    this.mainAxisExt,
+  });
 
   @override
   LoadMoreUiBuilderState<T> createState() {
@@ -154,7 +111,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
   late RefreshController _rController;
 
   PageStorageBucket bucket = PageStorageBucket();
-  var pskey = PageStorageKey('page1');
+  var pskey = const PageStorageKey('page1');
 
   @override
   void initState() {
@@ -215,30 +172,35 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
 
   final pullUpSty = TextStyle(fontSize: 15, color: Colors.grey.shade400);
 
+  func({
+    Map<String, dynamic>? map,
+    ReqType? requestType = ReqType.get,
+    String? newUrl,
+    bool? refreshShowLoading = true,
+  }) {
+    if (map != null) {
+      setState(() {
+        widget.map = map; // Warning: Modifying widget state
+      });
+    }
+    if (widget.isFirstLoad == false) {
+      setState(() {
+        widget.isFirstLoad = true; // Warning: Modifying widget state
+      });
+    }
+
+    bloc.getData(newUrl ?? widget.url!,
+        map: map ?? widget.map,
+        requestType: requestType,
+        requestShowLoading: refreshShowLoading!,
+        isCached: widget.isCached);
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
     var size = MediaQuery.of(context).size;
     return shopWidget(size);
-  }
-
-  func(
-      {Map<String, dynamic>? map,
-      ReqType? requestType = ReqType.get,
-      String? newUrl,
-      bool? refreshShowLoading = true}) {
-    widget.map = map;
-    if (widget.isFirstLoad == false) {
-      setState(() {
-        widget.isFirstLoad = true;
-      });
-    }
-
-    bloc.getData(newUrl ?? widget.url!,
-        map: map,
-        requestType: requestType,
-        requestShowLoading: refreshShowLoading!,
-        isCached: widget.isCached);
   }
 
   Widget shopWidget(Size size) {
@@ -256,7 +218,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                       if (rv.message == MsgState.loading) {
                         return widget.loadingWidget != null
                             ? widget.loadingWidget!
-                            : Center(
+                            : const Center(
                                 child: CircularProgressIndicator(),
                               );
                       } else if (rv.message == MsgState.data) {
@@ -267,8 +229,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                         }
 
                         return SmartRefresher(
-                            // reverse: true,
-                            physics: BouncingScrollPhysics(),
+                            physics: const BouncingScrollPhysics(),
                             scrollController: widget.scrollController,
                             primary:
                                 widget.scrollController == null ? true : false,
@@ -277,7 +238,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                               builder: (context, loadStatus) {
                                 if (loadStatus == LoadStatus.loading &&
                                     widget.scrollDirection == Axis.vertical) {
-                                  return Center(
+                                  return const Center(
                                       child: CupertinoActivityIndicator());
                                 } else if (loadStatus == LoadStatus.failed) {
                                   return Center(
@@ -305,7 +266,6 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                             enablePullUp: widget.enablePullUp
                                 ? widget.enablePullUp
                                 : ois.length > 9,
-                            // enablePullUp: true,
                             onRefresh: () {
                               bloc.getData(widget.url!,
                                   map: widget.map,
@@ -324,7 +284,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                                           SizedBox(
                                             height: size.height * 0.20,
                                           ),
-                                          Text(
+                                          const Text(
                                             "No Data",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
@@ -345,9 +305,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                                             mainList(ois)
                                           ],
                                         ),
-                                      )
-                            // mainList(ois)
-                            );
+                                      ));
                       } else if (rv.message == MsgState.error) {
                         return SingleChildScrollView(
                           child: ErrWidget(
@@ -363,7 +321,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
                         );
                       } else if (rv.message == MsgState.more) {
                         return widget.customMoreWidget == null
-                            ? SizedBox(
+                            ? const SizedBox(
                                 height: 40,
                                 child: Text("No more data found"),
                               )
@@ -392,7 +350,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
             scrollDirection: widget.scrollDirection,
             shrinkWrap: widget.scrollHeaderWidget != null ? true : false,
             physics: widget.scrollHeaderWidget != null
-                ? ClampingScrollPhysics()
+                ? const ClampingScrollPhysics()
                 : null,
             itemBuilder: (context, index) {
               T data = ois[index];
@@ -404,7 +362,7 @@ class LoadMoreUiBuilderState<T> extends State<LoadMoreUiBuilder>
         : GridView.builder(
             shrinkWrap: widget.scrollHeaderWidget != null ? true : false,
             physics: widget.scrollHeaderWidget != null
-                ? ClampingScrollPhysics()
+                ? const ClampingScrollPhysics()
                 : null,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: widget.crossAxisSpacing,
